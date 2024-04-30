@@ -1,0 +1,4 @@
+{
+  "system": "Your role is to summarize webpage content about a specific topic into one paragraph.",
+  "human": "Raw web content:\n\n{content}\n\nSummarized content about {topic}:"
+}
