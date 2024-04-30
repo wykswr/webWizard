@@ -4,7 +4,8 @@ from pathlib import Path
 from langchain_community.document_loaders import FireCrawlLoader
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
+
 
 with (Path(__file__).parent.parent / 'credential.json').open() as f:
     credential = json.load(f)
@@ -15,7 +16,7 @@ with (Path(__file__).parent / 'roles' / 'basic.json').open() as f:
 with (Path(__file__).parent / 'roles' / 'topic.json').open() as f:
     topic_summarizer = json.load(f)
 
-llm = ChatGroq(temperature=0, model_name="llama3-70b-8192", groq_api_key=credential['groq_api_key'])
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0125", openai_api_key=credential['open_ai_api_key'])
 
 
 def crawl(url: str) -> str:
